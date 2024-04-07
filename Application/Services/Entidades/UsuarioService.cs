@@ -24,7 +24,7 @@ public class UsuarioService : IUsuarioService
 		Usuario? usuario = await _usuarioRepository.ObterPorIdAsync(idUsuario);
 		if (usuario is null)
 		{
-			throw new Exception("Usuário com o id especificado não foi encontrado.");
+			throw new NotFoundException("Usuário com o id especificado não foi encontrado.");
 		}
 
 		return usuario.ToUsuarioResponse();
@@ -90,5 +90,44 @@ public class UsuarioService : IUsuarioService
 		string jwtToken = _geradorTokenJwt.GerarToken(usuarioParaLogar.Id, usuarioParaLogar.NomeCompleto);
 
 		return usuarioParaLogar.ToUsuarioLoginResponse(jwtToken);
+	}
+
+	public async Task<UsuarioResponse> EditarAsync(int idUsuarioLogado, int idUsuarioRota, EditarUsuarioRequest request)
+	{
+		if (idUsuarioLogado != idUsuarioRota)
+		{
+			throw new ForbiddenException("Não é possível editar dados de outros usuários.");
+		}
+
+		Usuario? usuario = await _usuarioRepository.ObterPorIdAsync(idUsuarioLogado);
+		if (usuario is null)
+		{
+			throw new NotFoundException("Usuário com o id especificado não existe.");
+		}
+
+		usuario.NomeCompleto = request.NomeCompleto;
+		usuario.PhoneNumber = request.Telefone;
+		usuario.Email = request.Email;
+
+		await _usuarioRepository.CommitAsync();
+
+		return usuario.ToUsuarioResponse();
+	}
+
+	public async Task DeletarAsync(int idUsuarioLogado, int idUsuarioADeletar)
+	{
+		if (idUsuarioLogado != idUsuarioADeletar)
+		{
+			throw new ForbiddenException("Não é possível excluir outros usuários.");
+		}
+
+		Usuario? usuario = await _usuarioRepository.ObterPorIdAsync(idUsuarioADeletar);
+		if (usuario is null)
+		{
+			throw new NotFoundException("Usuário com o id especificado não existe.");
+		}
+
+		_usuarioRepository.Delete(usuario);
+		await _usuarioRepository.CommitAsync();
 	}
 }
