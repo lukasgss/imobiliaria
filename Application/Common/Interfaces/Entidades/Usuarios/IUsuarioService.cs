@@ -1,6 +1,6 @@
-using Application.Common.Interfaces.Entidades.DTOs;
+using Application.Common.Interfaces.Entidades.Usuarios.DTOs;
 
-namespace Application.Common.Interfaces.Entidades;
+namespace Application.Common.Interfaces.Entidades.Usuarios;
 
 public interface IUsuarioService
 {

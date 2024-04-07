@@ -1,6 +1,6 @@
 using Application.Common.Interfaces.Autorizacao;
-using Application.Common.Interfaces.Entidades;
-using Application.Common.Interfaces.Entidades.DTOs;
+using Application.Common.Interfaces.Entidades.Usuarios;
+using Application.Common.Interfaces.Entidades.Usuarios.DTOs;
 using Application.Common.Validacoes.Erros;
 using Application.Common.Validacoes.ValidacoesUsuario;
 using FluentValidation.Results;

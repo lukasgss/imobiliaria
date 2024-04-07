@@ -2,7 +2,7 @@ using Application.Common.Interfaces.GenericRepository;
 using Domain.Entidades;
 using Microsoft.AspNetCore.Identity;
 
-namespace Application.Common.Interfaces.Entidades;
+namespace Application.Common.Interfaces.Entidades.Usuarios;
 
 public interface IUsuarioRepository : IGenericRepository<Usuario>
 {

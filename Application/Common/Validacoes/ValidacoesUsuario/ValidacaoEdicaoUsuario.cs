@@ -1,4 +1,4 @@
-using Application.Common.Interfaces.Entidades.DTOs;
+using Application.Common.Interfaces.Entidades.Usuarios.DTOs;
 using FluentValidation;
 
 namespace Application.Common.Validacoes.ValidacoesUsuario;

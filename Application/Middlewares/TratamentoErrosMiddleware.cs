@@ -53,6 +53,10 @@ public class TratamentoErrosMiddleware
 				statusCode = HttpStatusCode.Unauthorized;
 				message = exception.Message;
 				break;
+			case ForbiddenException:
+				statusCode = HttpStatusCode.Forbidden;
+				message = exception.Message;
+				break;
 			default:
 				statusCode = HttpStatusCode.InternalServerError;
 				message = "Erro interno no sistema, tente novamente mais tarde.";

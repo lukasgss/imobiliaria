@@ -1,4 +1,5 @@
 using Application.Common.Interfaces.Entidades;
+using Application.Common.Interfaces.Entidades.Usuarios;
 using Domain.Entidades;
 using Infrastructure.Persistencia.DataContext;
 using Microsoft.AspNetCore.Identity;
