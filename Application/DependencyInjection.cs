@@ -1,6 +1,7 @@
 using Application.Common.Interfaces.Autenticacao;
 using Application.Common.Interfaces.Autorizacao;
-using Application.Common.Interfaces.Entidades;
+using Application.Common.Interfaces.Entidades.Imoveis;
+using Application.Common.Interfaces.Entidades.Usuarios;
 using Application.Common.Interfaces.Providers;
 using Application.Common.Providers;
 using Application.Services.Autenticacao;
@@ -16,6 +17,7 @@ public static class DependencyInjection
 	{
 		services.AddScoped<IUsuarioService, UsuarioService>();
 		services.AddScoped<IAutorizacaoUsuarioService, AutorizacaoUsuarioService>();
+		services.AddScoped<IImovelService, ImovelService>();
 
 		services.AddSingleton<IGeradorTokenJwt, GeradorTokenJwt>();
 		services.AddSingleton<IValueProvider, ValueProvider>();

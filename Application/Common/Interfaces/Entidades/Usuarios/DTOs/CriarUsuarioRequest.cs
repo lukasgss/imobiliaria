@@ -1,4 +1,4 @@
-namespace Application.Common.Interfaces.Entidades.DTOs;
+namespace Application.Common.Interfaces.Entidades.Usuarios.DTOs;
 
 public class CriarUsuarioRequest
 {

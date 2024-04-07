@@ -1,8 +1,8 @@
 using Application.Common.Exceptions;
 using Application.Common.Extensions.Mapeamento;
 using Application.Common.Interfaces.Autenticacao;
-using Application.Common.Interfaces.Entidades;
-using Application.Common.Interfaces.Entidades.DTOs;
+using Application.Common.Interfaces.Entidades.Usuarios;
+using Application.Common.Interfaces.Entidades.Usuarios.DTOs;
 using Domain.Entidades;
 using Microsoft.AspNetCore.Identity;
 
