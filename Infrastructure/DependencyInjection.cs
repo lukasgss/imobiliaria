@@ -1,4 +1,5 @@
 using Application.Common.Interfaces.Entidades.Imoveis;
+using Application.Common.Interfaces.Entidades.Locacoes;
 using Application.Common.Interfaces.Entidades.Usuarios;
 using Infrastructure.Persistencia.DataContext;
 using Infrastructure.Persistencia.Repositorios;
@@ -14,6 +15,7 @@ public static class DependencyInjection
 	{
 		services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 		services.AddScoped<IImovelRepository, ImovelRepository>();
+		services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 
 		services.AddDbContext<AppDbContext>(options =>
 			options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
