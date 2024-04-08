@@ -63,6 +63,16 @@ public class GeradorUsuario
 		};
 	}
 
+	public static EditarUsuarioRequest GerarEditarUsuarioRequest()
+	{
+		return new EditarUsuarioRequest()
+		{
+			NomeCompleto = Constants.DadosUsuario.NomeCompleto,
+			Email = Constants.DadosUsuario.Email,
+			Telefone = Constants.DadosUsuario.Telefone,
+		};
+	}
+
 	public static LoginRequest GerarLoginRequest()
 	{
 		return new LoginRequest()

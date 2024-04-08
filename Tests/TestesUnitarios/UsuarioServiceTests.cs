@@ -26,6 +26,7 @@ public class UsuarioServiceTests
 	private readonly UsuarioResponse _respostaDadosUsuario = GeradorUsuario.GerarRespostaDadosUsuario();
 	private readonly UsuarioLoginResponse _respostaUsuario = GeradorUsuario.GerarRespostaUsuario();
 	private readonly CriarUsuarioRequest _criarUsuarioRequest = GeradorUsuario.GerarCriarUsuarioRequest();
+	private readonly EditarUsuarioRequest _editarUsuarioRequest = GeradorUsuario.GerarEditarUsuarioRequest();
 	private readonly LoginRequest _loginRequest = GeradorUsuario.GerarLoginRequest();
 
 	public UsuarioServiceTests()
@@ -137,5 +138,59 @@ public class UsuarioServiceTests
 		UsuarioLoginResponse respostaUsuario = await _sut.LoginAsync(_loginRequest);
 
 		Assert.Equivalent(_respostaUsuario, respostaUsuario);
+	}
+
+	[Fact]
+	public async Task Editar_Outro_Usuario_Retorna_ForbiddenException()
+	{
+		const int idUsuarioDiferente = 99;
+
+		async Task Result() => await _sut.EditarAsync(_usuario.Id, idUsuarioDiferente, _editarUsuarioRequest);
+
+		var exception = await Assert.ThrowsAsync<ForbiddenException>(Result);
+		Assert.Equal("Não é possível editar dados de outros usuários.", exception.Message);
+	}
+
+	[Fact]
+	public async Task Editar_Usuario_Nao_Existente_Retorna_NotFoundException()
+	{
+		_usuarioRepositoryMock.ObterPorIdAsync(_usuario.Id).ReturnsNull();
+
+		async Task Result() => await _sut.EditarAsync(_usuario.Id, _usuario.Id, _editarUsuarioRequest);
+
+		var exception = await Assert.ThrowsAsync<NotFoundException>(Result);
+		Assert.Equal("Usuário com o id especificado não existe.", exception.Message);
+	}
+
+	[Fact]
+	public async Task Editar_Usuario_Retorna_Usuario_Editado()
+	{
+		_usuarioRepositoryMock.ObterPorIdAsync(_usuario.Id).Returns(_usuario);
+
+		UsuarioResponse usuarioEditado = await _sut.EditarAsync(_usuario.Id, _usuario.Id, _editarUsuarioRequest);
+
+		Assert.Equivalent(_respostaDadosUsuario, usuarioEditado);
+	}
+
+	[Fact]
+	public async Task Excluir_Outro_Usuario_Retorna_ForbiddenException()
+	{
+		const int idUsuarioDiferente = 99;
+
+		async Task Result() => await _sut.DeletarAsync(_usuario.Id, idUsuarioDiferente);
+
+		var exception = await Assert.ThrowsAsync<ForbiddenException>(Result);
+		Assert.Equal("Não é possível excluir outros usuários.", exception.Message);
+	}
+
+	[Fact]
+	public async Task Excluir_Usuario_Nao_Existente_Retorna_NotFoundException()
+	{
+		_usuarioRepositoryMock.ObterPorIdAsync(_usuario.Id).ReturnsNull();
+
+		async Task Result() => await _sut.DeletarAsync(_usuario.Id, _usuario.Id);
+
+		var exception = await Assert.ThrowsAsync<NotFoundException>(Result);
+		Assert.Equal("Usuário com o id especificado não existe.", exception.Message);
 	}
 }
