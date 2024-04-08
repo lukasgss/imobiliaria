@@ -7,7 +7,9 @@ public static class MapeamentoUsuarios
 {
 	public static UsuarioResponse ToUsuarioResponse(this Usuario usuario)
 	{
-		return new UsuarioResponse(Email: usuario.Email!,
+		return new UsuarioResponse(
+			Id: usuario.Id,
+			Email: usuario.Email!,
 			NomeCompleto: usuario.NomeCompleto,
 			NumeroTelefone: usuario.PhoneNumber!);
 	}
