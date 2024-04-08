@@ -1,3 +1,4 @@
+using Api.ActionFilters;
 using Api.Conversoes;
 using Api.Extensoes;
 using Application;
@@ -10,7 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.ConfigurarLogs();
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options => { options.Filters.Add<ValidacaoModelAttribute>(); })
+	.ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; })
 	.AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter()); });
 
 builder.Services.ConfigurarSwagger();
