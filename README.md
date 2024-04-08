@@ -64,7 +64,7 @@ Após isso, entre na pasta de Infraestrutura e execute o seguinte comando para a
 ```bash
 dotnet ef --startup-project ../Api/Api.csproj database update
 ```
-Agora basta rodar o projeto com o seguinte comando:
+Agora basta rodar o projeto com o seguinte comando, na pasta de **Api**:
 ```bash
 dotnet run
 ```
