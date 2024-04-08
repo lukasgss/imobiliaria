@@ -85,4 +85,4 @@ Com o Seq configurado no Docker, basta entrar na aplicação web disponibilizada
 
 ## Observações
 1. Para inserir o token JWT no swagger, não é necessário adicionar o prefixo de Bearer, basta adicionar o token retornado pelo endpoint;
-2. Os arquivos de configurações que possuem dados sensíveis foram adicionados ao repositório propositalmente com o intuito de facilitar a criação do banco e dos testes da aplicação.
+2. Os arquivos de configurações que possuem dados sensíveis foram adicionados ao repositório propositalmente com o intuito de facilitar a criação do banco, dos serviços de logs e dos testes da aplicação.
