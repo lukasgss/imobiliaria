@@ -29,6 +29,20 @@ public class ImovelController : ControllerBase
 		return await _imovelService.ObterPorIdAsync(imovelId);
 	}
 
+	[HttpGet("aluguel/alugados")]
+	public async Task<ActionResult<IEnumerable<ImovelResponse>>> ObterImoveisAlugados()
+	{
+		var imoveisAlugados = await _imovelService.ObterImoveisAlugados();
+		return Ok(imoveisAlugados);
+	}
+
+	[HttpGet("aluguel/disponiveis")]
+	public async Task<ActionResult<IEnumerable<ImovelResponse>>> ObterImoveisDisponiveis()
+	{
+		var imoveisDisponiveis = await _imovelService.ObterImoveisDisponiveis();
+		return Ok(imoveisDisponiveis);
+	}
+
 	[Authorize]
 	[HttpPost]
 	public async Task<ActionResult<ImovelResponse>> Cadastrar(CriarImovelRequest criarImovelRequest)

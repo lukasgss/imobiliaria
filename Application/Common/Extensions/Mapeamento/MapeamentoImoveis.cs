@@ -19,4 +19,9 @@ public static class MapeamentoImoveis
 			Corretor: imovel.Corretor?.ToUsuarioResponse(),
 			Inquilino: imovel.Inquilino?.ToUsuarioResponse());
 	}
+
+	public static IEnumerable<ImovelResponse> ToImovelResponseList(this IEnumerable<Imovel> imoveis)
+	{
+		return imoveis.Select(imovel => imovel.ToImovelResponse()).ToList();
+	}
 }
