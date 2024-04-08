@@ -7,7 +7,8 @@ public static class MapeamentoImoveis
 {
 	public static ImovelResponse ToImovelResponse(this Imovel imovel)
 	{
-		return new ImovelResponse(Id: imovel.Id,
+		return new ImovelResponse(
+			Id: imovel.Id,
 			Endereco: imovel.Endereco,
 			Cep: imovel.Cep,
 			Cidade: imovel.Cidade,

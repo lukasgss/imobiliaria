@@ -96,7 +96,7 @@ public class ImovelService : IImovelService
 		if (imovelParaEditar is null)
 		{
 			_logger.LogInformation("Imóvel com id {IdImovel} não existe.", idImovel);
-			throw new NotFoundException("Imovel com o id especificado não existe.");
+			throw new NotFoundException("Imóvel com o id especificado não existe.");
 		}
 
 		if (imovelParaEditar.Proprietario.Id != idUsuarioLogado)
