@@ -2,16 +2,19 @@ using System.Net;
 using System.Text.Json;
 using Application.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Application.Middlewares;
 
 public class TratamentoErrosMiddleware
 {
 	private readonly RequestDelegate _next;
+	private readonly ILogger<TratamentoErrosMiddleware> _logger;
 
-	public TratamentoErrosMiddleware(RequestDelegate next)
+	public TratamentoErrosMiddleware(RequestDelegate next, ILogger<TratamentoErrosMiddleware> logger)
 	{
 		_next = next ?? throw new ArgumentNullException(nameof(next));
+		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
 	}
 
 	public async Task InvokeAsync(HttpContext context)
@@ -26,7 +29,7 @@ public class TratamentoErrosMiddleware
 		}
 	}
 
-	private static async Task HandleExceptionAsync(HttpContext context, Exception exception)
+	private async Task HandleExceptionAsync(HttpContext context, Exception exception)
 	{
 		HttpStatusCode statusCode;
 		string message;
@@ -63,7 +66,7 @@ public class TratamentoErrosMiddleware
 				break;
 		}
 
-		Console.WriteLine(exception.Message);
+		_logger.LogError("{@Exception}", exception);
 		context.Response.StatusCode = (int)statusCode;
 		await context.Response.WriteAsync(JsonSerializer.Serialize(new { statusCode, message }));
 	}
