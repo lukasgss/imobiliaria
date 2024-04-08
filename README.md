@@ -6,7 +6,7 @@ Foi pedido que fizesse um sistema no âmbito de locação de imóveis. A partir 
 1. Usuário se registra ou faz login na plataforma;
 2. Usuário cadastra um imóvel no qual pretende locar (usuário que o registra é sempre atribuído como o dono);
 3. Usuário cadastra uma locação, especificando qual o imóvel, o locatário, a data de vencimento e o valor mensal da locação;
-4. Usuário dono do imóvel, que cadastrou a locação, a assina (o sistema trata locações como um contrato);
+4. Usuário que cadastrou a locação a assina (o sistema trata locações como um contrato);
 5. Usuário locatário que foi especificado na locação cadastrada anteriormente também assina a locação;
 6. Com isso, a locação foi assinada por ambas as partes e é preenchido o valor na data de fechamento como a data atual, indicando quando a locação foi assinada por ambas as partes.
 
