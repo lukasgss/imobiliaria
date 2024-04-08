@@ -96,20 +96,13 @@ public class LocacaoService : ILocacaoService
 
 		Usuario locatario = await ValidarEObterLocatario(editarLocacaoRequest.IdLocatario);
 
-		locacaoDb.Imovel = imovel;
-		locacaoDb.Locatario = locatario;
-		locacaoDb.DataVencimento = editarLocacaoRequest.DataVencimento;
-		locacaoDb.ValorMensal = editarLocacaoRequest.ValorMensal;
-		// Quando o locatário alterar dados da locação, é necessário que ambos assinem novamente.
-		// Data de fechamento é setada como nulo, indicando como se não houvesse sido assinado
-		// por ambas as partes ainda
-		locacaoDb.LocadorAssinou = false;
-		locacaoDb.LocatarioAssinou = false;
-		locacaoDb.DataFechamento = null;
+		Locacao? locacao = await _locacaoRepository.EditarLocacao(locacaoDb, imovel, locatario, editarLocacaoRequest);
+		if (locacao is null)
+		{
+			throw new InternalServerErrorException();
+		}
 
-		await _locacaoRepository.CommitAsync();
-
-		return locacaoDb.ToLocacaoResponse();
+		return locacao.ToLocacaoResponse();
 	}
 
 	public async Task DeletarAsync(int idLocacao, int idUsuario)
