@@ -58,15 +58,17 @@ dotnet test
 
 ##  Rodar o projeto
 
-Para rodar o projeto, primeiramente é necessário executar as migrations para a criação do banco de dados. Para isso, entre na pasta de Infraestrutura e execute o seguinte comando:
+Para rodar o projeto, primeiramente é necessário executar as migrations para a criação do banco de dados. Para isso, é necessário alterar o usuário e senha do banco de dados especificado no arquivo appSettings.Development.json para as suas credenciais.
+
+Após isso, entre na pasta de Infraestrutura e execute o seguinte comando para aplicar as migrations:
 ```bash
 dotnet ef --startup-project ../Api/Api.csproj database update
 ```
-Com isso, basta rodar o projeto com o seguinte comando:
+Agora basta rodar o projeto com o seguinte comando:
 ```bash
 dotnet run
 ```
-Ao visitar a página no swagger, é possível interagir com todos os endpoints e testar a aplicação.
+Ao visitar a página no Swagger, é possível interagir com todos os endpoints e testar a aplicação.
 
 ## Estrutura de logs
 
