@@ -36,6 +36,20 @@ public class ImovelService : IImovelService
 		return imovel.ToImovelResponse();
 	}
 
+	public async Task<IEnumerable<ImovelResponse>> ObterImoveisAlugados()
+	{
+		var imoveis = await _imovelRepository.ObterImoveisAlugados();
+
+		return imoveis.ToImovelResponseList();
+	}
+
+	public async Task<IEnumerable<ImovelResponse>> ObterImoveisDisponiveis()
+	{
+		var imoveis = await _imovelRepository.ObterDisponiveisParaAluguel();
+
+		return imoveis.ToImovelResponseList();
+	}
+
 	public async Task<ImovelResponse> CadastrarAsync(CriarImovelRequest request, int idUsuarioLogado)
 	{
 		Usuario? proprietario = await _usuarioRepository.ObterPorIdAsync(idUsuarioLogado);
