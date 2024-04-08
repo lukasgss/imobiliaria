@@ -4,7 +4,7 @@
 
 Foi pedido que fizesse um sistema no âmbito de locação de imóveis. A partir disso, a forma como o sistema foi projetado para funcionar é a seguinte:
 1. Usuário se registra ou faz login na plataforma;
-2. Usuário cadastra um imóvel no qual pretende locar (usuário que o registra é sempre atribuído como o dono);
+2. Usuário cadastra um imóvel que pretende locar (usuário que o registra é sempre atribuído como o proprietário);
 3. Usuário cadastra uma locação, especificando qual o imóvel, o locatário, a data de vencimento e o valor mensal da locação;
 4. Usuário que cadastrou a locação a assina (o sistema trata locações como um contrato);
 5. Usuário locatário que foi especificado na locação cadastrada anteriormente também assina a locação;
@@ -21,7 +21,7 @@ O sistema foi feito baseado na Clean Architecture e foi dividido em 4 camadas, s
 
 ### Domínio
 
-É o core da aplicação, onde todas as regras de negócio são definidas. Ela contém as entidades de domínio e a lógica de negócios que operam sobre essas entidades. Por motivos de simplicidade da aplicação, não foi tão necessária uma abordagem mais DDD, fazendo com que essa aplicação sofra do que é chamado de um modelo de domínio anêmico, como descrito pelo Martin Fowler nesse [artigo](https://martinfowler.com/bliki/AnemicDomainModel.html). Este é um domínio no qual não possui comportamento e não encapsula as regras de negócio, apenas define as entidades.
+É o core da aplicação, onde todas as regras de negócio são definidas. Ela contém as entidades de domínio e a lógica de negócios que operam sobre essas entidades. Por motivos de simplicidade da aplicação, não foi tão necessária uma abordagem mais DDD, fazendo com que essa aplicação sofra do que é chamado de um modelo de domínio anêmico, como descrito por Martin Fowler nesse [artigo](https://martinfowler.com/bliki/AnemicDomainModel.html). Este é um domínio no qual não possui comportamento e não encapsula as regras de negócio, apenas define as entidades.
 
 ### Infraestrutura
 
@@ -50,7 +50,7 @@ dotnet test
 
 - Transactions onde são atualizadas múltiplas entidades, garantindo a [atomicidade](https://en.wikipedia.org/wiki/Atomicity_(database_systems)) da operação, assegurando que não haja inconsistências nos valores no banco;
 -  O projeto foi separado em camadas, cada uma com sua responsabilidade única, mantendo o sistema de fácil manutenção e suscetível a futuras alterações;
--  Padrões de projeto definidos, onde as interfaces são majoritariamente definidas na camada de Aplicação, por exemplo. Isso possibilita com que seja utilizada a camada de Infraestrutura na camada de Aplicação sem com que a camada de Aplicação dependa da de Infraestrutura;
+-  Padrões de projeto definidos, onde as interfaces são majoritariamente definidas na camada de Aplicação, por exemplo. Isso possibilita que a camada de Infraestrutura seja utilizada na camada de Aplicação sem que a Aplicação dependa da Infraestrutura;
 -  Adição de testes unitários, facilitando a manutenção e garantindo o funcionamento correto da aplicação;
 -  Princípios SOLID;
 -  Clean Code;
