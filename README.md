@@ -21,7 +21,7 @@ O sistema foi feito baseado na Clean Architecture e foi dividido em 4 camadas, s
 
 ### Domínio
 
-É o core da aplicação, onde todas as regras de negócio são definidas. Ela contém as entidades de domínio e a lógica de negócios que operam sobre essas entidades. Por motivos de simplicidade da aplicação, não foi tão necessária uma abordagem mais DDD, fazendo com que essa aplicação sofra do que é chamado de um domínio anêmico, como descrito pelo Martin Fowler nesse [artigo](https://martinfowler.com/bliki/AnemicDomainModel.html). Este é um domínio no qual não possui comportamento e não encapsula as regras de negócio, apenas define as entidades.
+É o core da aplicação, onde todas as regras de negócio são definidas. Ela contém as entidades de domínio e a lógica de negócios que operam sobre essas entidades. Por motivos de simplicidade da aplicação, não foi tão necessária uma abordagem mais DDD, fazendo com que essa aplicação sofra do que é chamado de um modelo de domínio anêmico, como descrito pelo Martin Fowler nesse [artigo](https://martinfowler.com/bliki/AnemicDomainModel.html). Este é um domínio no qual não possui comportamento e não encapsula as regras de negócio, apenas define as entidades.
 
 ### Infraestrutura
 
