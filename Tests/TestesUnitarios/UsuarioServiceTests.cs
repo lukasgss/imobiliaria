@@ -45,8 +45,8 @@ public class UsuarioServiceTests
 
 		async Task Result() => await _sut.ObterUsuarioPorIdAsync(Constants.DadosUsuario.Id);
 
-		var excecao = await Assert.ThrowsAsync<NotFoundException>(Result);
-		Assert.Equal("Usuário com o id especificado não foi encontrado.", excecao.Message);
+		var exception = await Assert.ThrowsAsync<NotFoundException>(Result);
+		Assert.Equal("Usuário com o id especificado não foi encontrado.", exception.Message);
 	}
 
 	[Fact]
@@ -66,8 +66,8 @@ public class UsuarioServiceTests
 
 		async Task Result() => await _sut.CadastrarAsync(_criarUsuarioRequest);
 
-		var excecao = await Assert.ThrowsAsync<ConflictException>(Result);
-		Assert.Equal("Usuário com o e-mail especificado já existe.", excecao.Message);
+		var exception = await Assert.ThrowsAsync<ConflictException>(Result);
+		Assert.Equal("Usuário com o e-mail especificado já existe.", exception.Message);
 	}
 
 	[Fact]
@@ -110,8 +110,8 @@ public class UsuarioServiceTests
 
 		async Task Result() => await _sut.LoginAsync(_loginRequest);
 
-		var excecao = await Assert.ThrowsAsync<LockedException>(Result);
-		Assert.Equal("Essa conta está bloqueada, aguarde e tente novamente.", excecao.Message);
+		var exception = await Assert.ThrowsAsync<LockedException>(Result);
+		Assert.Equal("Essa conta está bloqueada, aguarde e tente novamente.", exception.Message);
 	}
 
 	[Fact]
@@ -123,8 +123,8 @@ public class UsuarioServiceTests
 
 		async Task Result() => await _sut.LoginAsync(_loginRequest);
 
-		var excecao = await Assert.ThrowsAsync<UnauthorizedException>(Result);
-		Assert.Equal("Credenciais inválidas.", excecao.Message);
+		var exception = await Assert.ThrowsAsync<UnauthorizedException>(Result);
+		Assert.Equal("Credenciais inválidas.", exception.Message);
 	}
 
 	[Fact]

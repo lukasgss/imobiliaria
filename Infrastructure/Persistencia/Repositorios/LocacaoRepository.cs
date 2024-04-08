@@ -56,7 +56,6 @@ public class LocacaoRepository : GenericRepository<Locacao>, ILocacaoRepository
 			locacao.LocadorAssinou = false;
 			locacao.LocatarioAssinou = false;
 			locacao.DataFechamento = null;
-
 			await _dbContext.SaveChangesAsync();
 
 			// Ao alterar a locação, também é removido o inquilino da mesma, visto que ainda não foi assinado

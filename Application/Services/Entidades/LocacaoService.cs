@@ -220,7 +220,7 @@ public class LocacaoService : ILocacaoService
 			_logger.LogInformation("Usuário de id {IdLocatario} tentou se cadastrar como locatário e locador.",
 				idLocatario);
 			throw new BadRequestException(
-				"Não é possível ser o locatário e locador da locação.");
+				"Não é possível ser o locatário e o locador da locação.");
 		}
 	}
 
