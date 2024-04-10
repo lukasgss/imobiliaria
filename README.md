@@ -2,7 +2,7 @@
 
 ## Funcionamento do sistema
 
-Foi pedido que fizesse um sistema no âmbito de locação de imóveis. A partir disso, a forma como o sistema foi projetado para funcionar é a seguinte:
+Foi feito um sistema no âmbito de locação de imóveis. A partir disso, a forma como o sistema foi projetado para funcionar é a seguinte:
 1. Usuário se registra ou faz login na plataforma;
 2. Usuário cadastra um imóvel que pretende locar (usuário que o registra é sempre atribuído como o proprietário);
 3. Usuário cadastra uma locação, especificando qual o imóvel, o locatário, a data de vencimento e o valor mensal da locação;
